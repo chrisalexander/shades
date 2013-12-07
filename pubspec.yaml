@@ -1,0 +1,6 @@
+name: shades
+version: 0.0.1
+author: Chris Alexander <chris@chris-alexander.co.uk>
+description: Classes for dealing with colours
+dependencies:
+  unittest: any

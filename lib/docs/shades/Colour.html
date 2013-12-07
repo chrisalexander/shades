@@ -1,0 +1,285 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>Colour class / shades Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="shades" data-type="Colour">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../shades.html">shades</a> &rsaquo; <a href="../shades/Colour.html">Colour</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+<h2><div class="icon-library"></div><a href="../shades.html">shades</a></h2><ul class="icon">
+<li><div class="icon-class"></div><strong>Colour</strong></li>
+<li><a href="../shades/InvalidColourFieldException.html"><div class="icon-exception"></div>InvalidColourFieldException</a></li>
+<li><a href="../shades/UnknownStringColourException.html"><div class="icon-exception"></div>UnknownStringColourException</a></li>
+</ul>
+</div>
+<div class="content">
+        <h2><strong>Colour</strong>
+          class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<p>The colour class represents a single colour.</p>
+<p>It can be constructed from hex, rgb(a), or a string, and converted to hex and rgb(a).</p>
+<pre class="source">
+class Colour {
+ 
+ int _r = 0, _g = 0, _b = 0, _a = 255;
+ 
+ Map&lt;String, List&lt;int&gt;&gt; _colours = {
+   "white": [255, 255, 255]
+ };
+ 
+ /**
+  * Default constructor with RGBA values
+  */
+ Colour(this._r, this._g, this._b, this._a) {
+   _validate();
+ }
+
+ /**
+  * Explicit from RGB constructor
+  */
+ Colour.fromRGB(this._r, this._g, this._b) : _a = 255 {
+   _validate();
+ }
+ 
+ /**
+  * Explicit from RGBA constructor
+  */
+ Colour.fromRGBA(this._r, this._g, this._b, this._a) {
+   _validate();
+ }
+ 
+ /**
+  * Constructor with a string name or a hex value
+  */
+ Colour.fromString(String string) {
+   string = string.toLowerCase();
+   if (this._isHex(string)) {
+     this._initialiseFromHex(string.replaceAll("#", ""));
+   } else if (this._isColourString(string)) {
+     this._r = this._colours[string][0];
+     this._g = this._colours[string][1];
+     this._b = this._colours[string][2];
+   } else {
+     throw new UnknownStringColourException(string);
+   }
+   _validate();
+ }
+ 
+ /**
+  * Returns the RGB as a list
+  */
+ List&lt;int&gt; getRGB() {
+   return [this._r, this._g, this._b];
+ }
+ 
+ /**
+  * Returns the RGBA as a list
+  */
+ List&lt;int&gt; getRGBA() {
+   return [this._r, this._g, this._b, this._a];
+ }
+ 
+ /**
+  * Returns a string representing the colour as CSS
+  */
+ String getCSS() {
+   return "rgba(${this._r}, ${this._g}, ${this._b}, ${this._a})";
+ }
+ 
+ /**
+  * [toString] aliases [getCSS] 
+  */
+ String toString() {
+   return this.getCSS();
+ }
+ 
+ void _validate() {
+   this._validateField("r", this._r);
+   this._validateField("g", this._g);
+   this._validateField("b", this._b);
+   this._validateField("a", this._a);
+ }
+ 
+ void _validateField(String field, int value) {
+   if (value &lt; 0 || value &gt; 255) {
+     throw new InvalidColourFieldException(field, value);
+   }
+ }
+ 
+ /**
+  * Determines whether a string input is text or hex
+  */
+ bool _isHex(String string) {
+   RegExp exp = new RegExp(r"^#?([_a-f0-9]{3})|([_a-f0-9]{6})", caseSensitive: false);
+   return exp.hasMatch(string);
+ }
+ 
+ /**
+  * Returns whether or not the string is a known colour
+  */
+ bool _isColourString(String string) {
+   return this._colours.containsKey(string);
+ }
+ 
+ /**
+  * Initialises colour from hex code
+  */
+ void _initialiseFromHex(String string) {
+   this._r = int.parse(string.substring(0, 2), radix: 16);
+   this._g = int.parse(string.substring(2, 4), radix: 16);
+   this._b = int.parse(string.substring(4, 6), radix: 16);
+ }
+ 
+}
+</pre>
+</div>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="">
+<button class="show-code">Code</button>
+new <strong>Colour</strong>(<a href="http://api.dartlang.org/dart_core/int.html">int</a> _r, <a href="http://api.dartlang.org/dart_core/int.html">int</a> _g, <a href="http://api.dartlang.org/dart_core/int.html">int</a> _b, <a href="http://api.dartlang.org/dart_core/int.html">int</a> _a) <a class="anchor-link" href="#"
+              title="Permalink to Colour.Colour">#</a></h4>
+<div class="doc">
+<p>Default constructor with RGBA values</p>
+<pre class="source">
+Colour(this._r, this._g, this._b, this._a) {
+ _validate();
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="fromRGB">
+<button class="show-code">Code</button>
+new <strong>Colour.fromRGB</strong>(<a href="http://api.dartlang.org/dart_core/int.html">int</a> _r, <a href="http://api.dartlang.org/dart_core/int.html">int</a> _g, <a href="http://api.dartlang.org/dart_core/int.html">int</a> _b) <a class="anchor-link" href="#fromRGB"
+              title="Permalink to Colour.Colour.fromRGB">#</a></h4>
+<div class="doc">
+<p>Explicit from RGB constructor</p>
+<pre class="source">
+Colour.fromRGB(this._r, this._g, this._b) : _a = 255 {
+ _validate();
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="fromRGBA">
+<button class="show-code">Code</button>
+new <strong>Colour.fromRGBA</strong>(<a href="http://api.dartlang.org/dart_core/int.html">int</a> _r, <a href="http://api.dartlang.org/dart_core/int.html">int</a> _g, <a href="http://api.dartlang.org/dart_core/int.html">int</a> _b, <a href="http://api.dartlang.org/dart_core/int.html">int</a> _a) <a class="anchor-link" href="#fromRGBA"
+              title="Permalink to Colour.Colour.fromRGBA">#</a></h4>
+<div class="doc">
+<p>Explicit from RGBA constructor</p>
+<pre class="source">
+Colour.fromRGBA(this._r, this._g, this._b, this._a) {
+ _validate();
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="fromString">
+<button class="show-code">Code</button>
+new <strong>Colour.fromString</strong>(<a href="http://api.dartlang.org/dart_core/String.html">String</a> string) <a class="anchor-link" href="#fromString"
+              title="Permalink to Colour.Colour.fromString">#</a></h4>
+<div class="doc">
+<p>Constructor with a string name or a hex value</p>
+<pre class="source">
+Colour.fromString(String string) {
+ string = string.toLowerCase();
+ if (this._isHex(string)) {
+   this._initialiseFromHex(string.replaceAll("#", ""));
+ } else if (this._isColourString(string)) {
+   this._r = this._colours[string][0];
+   this._g = this._colours[string][1];
+   this._b = this._colours[string][2];
+ } else {
+   throw new UnknownStringColourException(string);
+ }
+ _validate();
+}
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="getCSS">
+<button class="show-code">Code</button>
+<a href="http://api.dartlang.org/dart_core/String.html">String</a> <strong>getCSS</strong>() <a class="anchor-link" href="#getCSS"
+              title="Permalink to Colour.getCSS">#</a></h4>
+<div class="doc">
+<p>Returns a string representing the colour as CSS</p>
+<pre class="source">
+String getCSS() {
+ return "rgba(${this._r}, ${this._g}, ${this._b}, ${this._a})";
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="getRGB">
+<button class="show-code">Code</button>
+<a href="http://api.dartlang.org/dart_core/List.html">List</a>&lt;<a href="http://api.dartlang.org/dart_core/int.html">int</a>&gt; <strong>getRGB</strong>() <a class="anchor-link" href="#getRGB"
+              title="Permalink to Colour.getRGB">#</a></h4>
+<div class="doc">
+<p>Returns the RGB as a list</p>
+<pre class="source">
+List&lt;int&gt; getRGB() {
+ return [this._r, this._g, this._b];
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="getRGBA">
+<button class="show-code">Code</button>
+<a href="http://api.dartlang.org/dart_core/List.html">List</a>&lt;<a href="http://api.dartlang.org/dart_core/int.html">int</a>&gt; <strong>getRGBA</strong>() <a class="anchor-link" href="#getRGBA"
+              title="Permalink to Colour.getRGBA">#</a></h4>
+<div class="doc">
+<p>Returns the RGBA as a list</p>
+<pre class="source">
+List&lt;int&gt; getRGBA() {
+ return [this._r, this._g, this._b, this._a];
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="toString">
+<button class="show-code">Code</button>
+<a href="http://api.dartlang.org/dart_core/String.html">String</a> <strong>toString</strong>() <a class="anchor-link" href="#toString"
+              title="Permalink to Colour.toString">#</a></h4>
+<div class="doc">
+<p><a class="crossref" href="../shades/Colour.html#toString">toString</a> aliases <a class="crossref" href="../shades/Colour.html#getCSS">getCSS</a> </p>
+<pre class="source">
+String toString() {
+ return this.getCSS();
+}
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2013-12-07 13:34:29.835</div>
+        </div>
+        <script async src="../client-static.js"></script>
+        </body></html>
+        

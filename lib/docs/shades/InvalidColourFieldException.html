@@ -1,0 +1,104 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>InvalidColourFieldException class / shades Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="shades" data-type="InvalidColourFieldException">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../shades.html">shades</a> &rsaquo; <a href="../shades/InvalidColourFieldException.html">InvalidColourFieldException</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+<h2><div class="icon-library"></div><a href="../shades.html">shades</a></h2><ul class="icon">
+<li><a href="../shades/Colour.html"><div class="icon-class"></div>Colour</a></li>
+<li><div class="icon-exception"></div><strong>InvalidColourFieldException</strong></li>
+<li><a href="../shades/UnknownStringColourException.html"><div class="icon-exception"></div>UnknownStringColourException</a></li>
+</ul>
+</div>
+<div class="content">
+        <h2><strong>InvalidColourFieldException</strong>
+          class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<p>Exception thrown when a colour object validates and finds an out of range
+numeric value for an RGB(A) component</p>
+<pre class="source">
+class InvalidColourFieldException implements Exception {
+ 
+ String _message;
+ 
+ InvalidColourFieldException(String field, int value) : _message = "Invalid field $field, expected range 0 to 255 inclusive but was $value";
+ 
+ String toString() {
+   return _message;
+ }
+ 
+}
+</pre>
+</div>
+<h3>Implements</h3>
+<p>
+<span class="type-box"><span class="icon-exception"></span><a href="../dart_core/Exception.html">Exception</a></span></p>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="">
+<button class="show-code">Code</button>
+new <strong>InvalidColourFieldException</strong>(<a href="http://api.dartlang.org/dart_core/String.html">String</a> field, <a href="http://api.dartlang.org/dart_core/int.html">int</a> value) <a class="anchor-link" href="#"
+              title="Permalink to InvalidColourFieldException.InvalidColourFieldException">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Creates a new <a class="crossref" href="../dart_core/Object.html">Object</a> instance.</p>
+<p><a class="crossref" href="../dart_core/Object.html">Object</a> instances have no meaningful state, and are only useful
+through their identity. An <a class="crossref" href="../dart_core/Object.html">Object</a> instance is equal to itself
+only.</p>
+<div class="docs-inherited-from">docs inherited from <a href="http://api.dartlang.org/dart_core/Object.html">Object</a> </div></div>
+<pre class="source">
+InvalidColourFieldException(String field, int value) : _message = "Invalid field $field, expected range 0 to 255 inclusive but was $value";
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="toString">
+<button class="show-code">Code</button>
+<a href="http://api.dartlang.org/dart_core/String.html">String</a> <strong>toString</strong>() <a class="anchor-link" href="#toString"
+              title="Permalink to InvalidColourFieldException.toString">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Returns a string representation of this object.</p>
+<div class="docs-inherited-from">docs inherited from <a href="http://api.dartlang.org/dart_core/Object.html">Object</a> </div></div>
+<pre class="source">
+String toString() {
+ return _message;
+}
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2013-12-07 13:34:29.879</div>
+        </div>
+        <script async src="../client-static.js"></script>
+        </body></html>
+        
