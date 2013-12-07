@@ -2,5 +2,6 @@ name: shades
 version: 0.0.1
 author: Chris Alexander <chris@chris-alexander.co.uk>
 description: Classes for dealing with colours
+homepage: https://github.com/chrisalexander/shades
 dependencies:
-  unittest: any
+  unittest: 0.9.0
